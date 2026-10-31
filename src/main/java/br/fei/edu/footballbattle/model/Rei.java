@@ -12,4 +12,10 @@ public class Rei extends Protagonista{
     public Rei(){
         super("Pelé - O Rei", 10, 8, 130, 130, "A força do trono", 0);
     }
+    
+    @Override
+    public void usarPoderEspecial(Personagem alvo){
+        this.setNivelAtaque(2* this.getNivelAtaque());
+        atacar(alvo);
+    }
 }

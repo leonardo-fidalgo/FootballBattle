@@ -13,5 +13,14 @@ public class Bruxo extends Protagonista{
         super("R10 - O Bruxo", 8, 7, 140, 140, "Magia Pura", 0);
     }
     
-
+    @Override
+    public void usarPoderEspecial(Personagem alvo){
+        
+        alvo.setNivelDefesa(0);
+        alvo.setNivelAtaque(0);
+        
+        this.setNivelAtaque(this.getNivelAtaque() - 2);
+        
+        atacar(alvo);
+    }
 }

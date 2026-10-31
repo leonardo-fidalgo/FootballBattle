@@ -83,7 +83,7 @@ public abstract class  Personagem {
         }
     }
     
-    public void usarPoderEspecial(){}
+    public void usarPoderEspecial(Personagem alvo){}
     
     public boolean estaVivo(){
         if(vidaAtual >0){

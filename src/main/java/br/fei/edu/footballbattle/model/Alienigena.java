@@ -11,5 +11,11 @@ package br.fei.edu.footballbattle.model;
 public class Alienigena extends Protagonista{
         public Alienigena(){
         super("Messi - O ET", 9, 7, 130, 130, "Abducao", 0);
-    };
+    }
+        
+    @Override
+    public void usarPoderEspecial(Personagem alvo){
+        alvo.setNivelDefesa(0);
+        atacar(alvo);
+    }
 }

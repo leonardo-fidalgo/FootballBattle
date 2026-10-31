@@ -12,17 +12,17 @@ public abstract class  Personagem {
     private String nome;
     private int nivelAtaque;
     private int nivelDefesa;
-    private int VidaAtual;
-    private int VidaMaxima;
-    private String NomepoderEspecial;
+    private int vidaAtual;
+    private int vidaMaxima;
+    private String nomepoderEspecial;
 
-    public Personagem(String nome, int nivelAtaque, int nivelDefesa, int VidaAtual, int VidaMaxima, String NomepoderEspecial) {
+    public Personagem(String nome, int nivelAtaque, int nivelDefesa, int vidaAtual, int vidaMaxima, String nomepoderEspecial) {
         this.nome = nome;
         this.nivelAtaque = nivelAtaque;
         this.nivelDefesa = nivelDefesa;
-        this.VidaAtual = VidaAtual;
-        this.VidaMaxima = VidaMaxima;
-        this.NomepoderEspecial = NomepoderEspecial;
+        this.vidaAtual = vidaAtual;
+        this.vidaMaxima = vidaMaxima;
+        this.nomepoderEspecial = nomepoderEspecial;
     }
 
       
@@ -39,19 +39,19 @@ public abstract class  Personagem {
     }
 
     public int getVidaAtual() {
-        return VidaAtual;
+        return vidaAtual;
     }
 
     public int getVidaMaxima() {
-        return VidaMaxima;
+        return vidaMaxima;
     }
 
     public String getNomepoderEspecial() {
-        return NomepoderEspecial;
+        return nomepoderEspecial;
     }
 
     public void setVidaAtual(int VidaAtual) {
-        this.VidaAtual = VidaAtual;
+        this.vidaAtual = VidaAtual;
     }
 
     public void setNivelAtaque(int nivelAtaque) {

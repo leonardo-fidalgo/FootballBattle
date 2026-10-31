@@ -9,5 +9,7 @@ package br.fei.edu.footballbattle.model;
  * @author SAMSUNG
  */
 public class Xerife extends Protagonista{
-    
+        public Xerife(){
+        super("Sérgio Ramos - O Xerixe", 6, 10, 150, 150, "A muralha", 0);
+    };
 }

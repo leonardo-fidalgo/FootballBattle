@@ -10,6 +10,8 @@ package br.fei.edu.footballbattle.model;
  */
 public class Bruxo extends Protagonista{
     public Bruxo(){
-        super("R10 - O Bruxo", 9, 10, 130, 130, "Magia Pura", 0);
+        super("R10 - O Bruxo", 8, 7, 140, 140, "Magia Pura", 0);
     }
+    
+
 }

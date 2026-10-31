@@ -15,8 +15,10 @@ public abstract class  Personagem {
     private int vidaAtual;
     private int vidaMaxima;
     private String nomepoderEspecial;
-
-    public Personagem(String nome, int nivelAtaque, int nivelDefesa, int vidaAtual, int vidaMaxima, String nomepoderEspecial) {
+    private boolean defendendo = false;
+    
+    public Personagem(String nome, int nivelAtaque, int nivelDefesa, 
+            int vidaAtual, int vidaMaxima, String nomepoderEspecial) {
         this.nome = nome;
         this.nivelAtaque = nivelAtaque;
         this.nivelDefesa = nivelDefesa;
@@ -64,11 +66,32 @@ public abstract class  Personagem {
     
     public void atacar(Personagem alvo){}
     
-    public void defender(){}
+    public void defender(){
+        defendendo = true;
+    }
 
+    public void aplicarDano(int dano){
+        if(defendendo){
+            dano = dano /2;
+            defendendo = false;
+        }
+        int vidaAposAtaque = getVidaAtual() - dano;
+        if(vidaAposAtaque > 0){
+            setVidaAtual(vidaAposAtaque);
+        }else{
+            setVidaAtual(0);
+        }
+    }
+    
     public void usarPoderEspecial(){}
     
-    public void estaVivo(){}
+    public boolean estaVivo(){
+        if(vidaAtual >0){
+            return true;
+        }
+        
+        return false;
+    }
     
     
     

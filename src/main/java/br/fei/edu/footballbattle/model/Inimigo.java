@@ -13,16 +13,20 @@ import java.util.Random;
 public abstract class Inimigo extends Personagem {
     Random random = new Random();
 
-    public Inimigo(String nome, int nivelAtaque, int nivelDefesa, int VidaAtual, int VidaMaxima, String NomepoderEspecial) {
-        super(nome, nivelAtaque, nivelDefesa, VidaAtual, VidaMaxima, NomepoderEspecial);
+    public Inimigo(String nome, int nivelAtaque, int nivelDefesa, 
+            int VidaAtual, int VidaMaxima, String NomepoderEspecial) {
+        super(nome, nivelAtaque, nivelDefesa, VidaAtual, VidaMaxima,
+                NomepoderEspecial);
     }
     
     @Override
     public void atacar(Personagem alvo){
         int aleatorio = random.nextInt(7) -3; // numero aleatório entre -3 e 3
-        int dano = 2 * this.getNivelAtaque() + 10 - alvo.getNivelDefesa() + aleatorio;
+        int dano = 2 * this.getNivelAtaque() + 10 - alvo.getNivelDefesa() 
+                + aleatorio;
         if(dano >= 0){
-        alvo.setVidaAtual(alvo.getVidaAtual()- dano);
+            alvo.aplicarDano(dano);
+
         }
     }
 }

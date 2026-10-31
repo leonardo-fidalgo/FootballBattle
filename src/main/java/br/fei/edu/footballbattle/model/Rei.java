@@ -10,6 +10,6 @@ package br.fei.edu.footballbattle.model;
  */
 public class Rei extends Protagonista{
     public Rei(){
-        super("Pelé - O Rei", 10, 7, 130, 130, "A força do trono", 0);
+        super("Pelé - O Rei", 10, 8, 130, 130, "A força do trono", 0);
     }
 }

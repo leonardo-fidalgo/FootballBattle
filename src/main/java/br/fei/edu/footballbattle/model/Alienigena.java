@@ -15,6 +15,7 @@ public class Alienigena extends Protagonista{
         
     @Override
     public void usarPoderEspecial(Personagem alvo){
+        super.usarPoderEspecial(alvo);
         alvo.setNivelDefesa(0);
         atacar(alvo);
     }

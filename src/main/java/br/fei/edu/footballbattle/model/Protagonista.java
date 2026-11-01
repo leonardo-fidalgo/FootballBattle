@@ -14,9 +14,10 @@ import java.util.List;
 public abstract class Protagonista extends Personagem {
     private int energia;
     private List<Inimigo>inimigosEnfrentados;
+    private boolean poderEspecialAtivado =false;
     public  Protagonista(String nome, int nivelAtaque, int nivelDefesa, 
             int vidaAtual, int vidaMaxima, String nomepoderEspecial, 
-            int Energia) {
+            int energia) {
         super(nome, nivelAtaque, nivelDefesa, vidaAtual, vidaMaxima, 
                 nomepoderEspecial);
         this.energia = energia;
@@ -29,7 +30,28 @@ public abstract class Protagonista extends Personagem {
         if(dano >= 0){
         alvo.aplicarDano(dano);
         }
+        
+        if(!poderEspecialAtivado){
+        int novaEnergia = this.getEnergia() + 25;
+        this.setEnergia(novaEnergia);
+        
+        }
     }   
+    
+    @Override
+    public void defender(){
+        super.defender();
+        
+        int novaEnergia = this.getEnergia() + 15;
+        this.setEnergia(novaEnergia);        
+    }
+    
+    @Override
+    public void usarPoderEspecial(Personagem alvo){
+        this.poderEspecialAtivado = true;
+        int novaEnergia = this.getEnergia() - 100;
+        this.setEnergia(novaEnergia);
+    }
 
     public int getEnergia() {
         return energia;
@@ -45,6 +67,14 @@ public abstract class Protagonista extends Personagem {
 
     public void setInimigosEnfrentados(List<Inimigo> inimigosEnfrentados) {
         this.inimigosEnfrentados = inimigosEnfrentados;
+    }
+
+    public boolean isPoderEspecialAtivado() {
+        return poderEspecialAtivado;
+    }
+
+    public void setPoderEspecialAtivado(boolean poderEspecialAtivado) {
+        this.poderEspecialAtivado = poderEspecialAtivado;
     }
     
     

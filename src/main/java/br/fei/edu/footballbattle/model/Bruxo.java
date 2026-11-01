@@ -15,7 +15,7 @@ public class Bruxo extends Protagonista{
     
     @Override
     public void usarPoderEspecial(Personagem alvo){
-        
+        super.usarPoderEspecial(alvo);
         alvo.setNivelDefesa(0);
         alvo.setNivelAtaque(0);
         

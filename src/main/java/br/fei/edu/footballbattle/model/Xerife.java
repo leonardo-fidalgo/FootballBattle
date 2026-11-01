@@ -15,6 +15,7 @@ public class Xerife extends Protagonista{
         
     @Override
     public void usarPoderEspecial(Personagem alvo){
+        super.usarPoderEspecial(alvo);
         int novaDefesa = 2* this.getNivelDefesa();
         this.setNivelDefesa(novaDefesa);
         atacar(alvo);

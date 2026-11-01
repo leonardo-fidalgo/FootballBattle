@@ -15,7 +15,7 @@ public class Rei extends Protagonista{
     
     @Override
     public void usarPoderEspecial(Personagem alvo){
-
+        super.usarPoderEspecial(alvo);
         int novoAtaque = 2* this.getNivelAtaque();
         this.setNivelAtaque(novoAtaque);
         atacar(alvo);

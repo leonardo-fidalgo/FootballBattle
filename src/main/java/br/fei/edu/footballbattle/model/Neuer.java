@@ -20,5 +20,6 @@ public class Neuer extends Inimigo{
         this.setNivelAtaque(novoAtaque);
         this.setNivelDefesa(0);
         
+        atacar(alvo);
     }
 }

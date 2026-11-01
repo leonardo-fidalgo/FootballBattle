@@ -18,6 +18,8 @@ public class AranhaNegra extends Inimigo{
     public void usarPoderEspecial(Personagem alvo){
         int novoAtaqueAlvo = alvo.getNivelAtaque() - 4;
         alvo.setNivelAtaque(novoAtaqueAlvo);
+        
+        atacar(alvo);
     }
     
     

@@ -19,7 +19,8 @@ public class Bruxo extends Protagonista{
         alvo.setNivelDefesa(0);
         alvo.setNivelAtaque(0);
         
-        this.setNivelAtaque(this.getNivelAtaque() - 2);
+        int novoAtaque = this.getNivelAtaque() - 2;
+        this.setNivelAtaque(novoAtaque);
         
         atacar(alvo);
     }

@@ -16,8 +16,10 @@ public class Titan extends Inimigo{
     
     @Override
     public void usarPoderEspecial(Personagem alvo){
-        this.setNivelAtaque(this.getNivelAtaque() + 4);
-        this.setNivelDefesa(this.getNivelDefesa() -2);
+        int novoAtaque = this.getNivelAtaque() + 4;
+        int novaDefesa = this.getNivelDefesa() -2;
+        this.setNivelAtaque(novoAtaque);
+        this.setNivelDefesa(novaDefesa);
     
         atacar(alvo);
     

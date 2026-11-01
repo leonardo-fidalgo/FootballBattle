@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class Protagonista extends Personagem {
     private int energia;
     private List<Inimigo>inimigosEnfrentados;
-    private boolean poderEspecialAtivado =false;
+    private boolean poderEspecialAtivado = false;
     public  Protagonista(String nome, int nivelAtaque, int nivelDefesa, 
             int vidaAtual, int vidaMaxima, String nomepoderEspecial, 
             int energia) {

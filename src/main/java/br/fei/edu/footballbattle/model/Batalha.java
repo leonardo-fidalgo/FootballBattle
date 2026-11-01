@@ -13,12 +13,20 @@ public class Batalha {
     private Inimigo inimigo;
     private boolean turnoProtagonista;
     private boolean batalhaFinalizada;
-
+    private int nivelAtaqueOriginalProtagonista;
+    private int nivelDefesaOriginalProtagonista;
+    private int nivelAtaqueOriginalInimigo;
+    private int nivelDefesaOriginalInimigo;
+    
     public Batalha(Protagonista protagonista, Inimigo inimigo) {
         this.protagonista = protagonista;
         this.inimigo = inimigo;
         this.turnoProtagonista = true;
         this.batalhaFinalizada = false;
+        this.nivelAtaqueOriginalProtagonista = protagonista.getNivelAtaque();
+        this.nivelDefesaOriginalProtagonista = protagonista.getNivelDefesa();
+        this.nivelAtaqueOriginalInimigo = inimigo.getNivelAtaque();
+        this.nivelDefesaOriginalInimigo = inimigo.getNivelDefesa();
     }
     
     public void verificarFimBatalha() {
@@ -54,5 +62,49 @@ public class Batalha {
         }
     }
     
+    public void defesaProtagonista(){
+        if(!batalhaFinalizada && turnoProtagonista){
+            protagonista.defender();
+            alternarTurno();
+        }
+    }
     
+    public void defesaInimigo(){
+        if(!batalhaFinalizada && turnoProtagonista){
+            inimigo.defender();
+            alternarTurno();
+        }
+    }
+    
+    
+    public void restaurarNiveisProtagonista(){
+        protagonista.setNivelAtaque(nivelAtaqueOriginalProtagonista);
+        protagonista.setNivelDefesa(nivelDefesaOriginalProtagonista);
+    }
+    
+    public void restaurarNiveisInimigo(){
+        inimigo.setNivelAtaque(nivelAtaqueOriginalInimigo);
+        inimigo.setNivelDefesa(nivelDefesaOriginalInimigo);
+    }
+    
+    public void poderEspecialProtagonista(){
+        if(!batalhaFinalizada && turnoProtagonista 
+                && protagonista.getEnergia() >= 100){
+            protagonista.usarPoderEspecial(inimigo);
+            verificarFimBatalha();
+            if(!batalhaFinalizada){
+                alternarTurno();
+            }
+        }
+    }
+
+    public void poderEspecialInimigo(){
+        if(!batalhaFinalizada && !turnoProtagonista){
+            inimigo.usarPoderEspecial(protagonista);
+            verificarFimBatalha();
+            if(!batalhaFinalizada){
+                alternarTurno();
+            }
+        }
+    }
 }

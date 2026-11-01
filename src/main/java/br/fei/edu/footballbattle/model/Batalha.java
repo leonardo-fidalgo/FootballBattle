@@ -17,6 +17,8 @@ public class Batalha {
     private int nivelDefesaOriginalProtagonista;
     private int nivelAtaqueOriginalInimigo;
     private int nivelDefesaOriginalInimigo;
+    private int turnosRestantesComPoderP = 0;
+    private int turnosRestantesComPoderI = 0;
     
     public Batalha(Protagonista protagonista, Inimigo inimigo) {
         this.protagonista = protagonista;
@@ -70,7 +72,7 @@ public class Batalha {
     }
     
     public void defesaInimigo(){
-        if(!batalhaFinalizada && turnoProtagonista){
+        if(!batalhaFinalizada  && turnoProtagonista){
             inimigo.defender();
             alternarTurno();
         }

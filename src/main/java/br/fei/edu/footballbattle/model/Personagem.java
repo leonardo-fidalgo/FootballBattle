@@ -64,7 +64,7 @@ public abstract class  Personagem {
         this.nivelDefesa = nivelDefesa;
     }
     
-    public void atacar(Personagem alvo){}
+    public abstract void atacar(Personagem alvo);
     
     public void defender(){
         defendendo = true;

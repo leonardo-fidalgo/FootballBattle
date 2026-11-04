@@ -17,8 +17,8 @@ public class Batalha {
     private int nivelDefesaOriginalProtagonista;
     private int nivelAtaqueOriginalInimigo;
     private int nivelDefesaOriginalInimigo;
-    private int turnosRestantesComPoderP = 0;
-    private int turnosRestantesComPoderI = 0;
+    private boolean efeitoProtagonistaPendente = false;
+    private boolean efeitoInimigoPendente = false;
     
     public Batalha(Protagonista protagonista, Inimigo inimigo) {
         this.protagonista = protagonista;
@@ -47,6 +47,8 @@ public class Batalha {
         if(!batalhaFinalizada && turnoProtagonista){
             protagonista.atacar(inimigo);
         
+            finalizarEfeitoInimigo();
+        
             verificarFimBatalha();
             if(!batalhaFinalizada){
                 alternarTurno();
@@ -56,7 +58,12 @@ public class Batalha {
    
     public void ataqueInimigo(){
         if(!batalhaFinalizada && !turnoProtagonista){
+            
             inimigo.atacar(protagonista);
+            
+            finalizarEfeitoProtagonista();
+            
+            
             verificarFimBatalha();
             if(!batalhaFinalizada){
                 alternarTurno();
@@ -67,6 +74,8 @@ public class Batalha {
     public void defesaProtagonista(){
         if(!batalhaFinalizada && turnoProtagonista){
             protagonista.defender();
+            
+            finalizarEfeitoInimigo();
             alternarTurno();
         }
     }
@@ -74,6 +83,8 @@ public class Batalha {
     public void defesaInimigo(){
         if(!batalhaFinalizada  && turnoProtagonista){
             inimigo.defender();
+            
+            finalizarEfeitoProtagonista();
             alternarTurno();
         }
     }
@@ -89,20 +100,77 @@ public class Batalha {
         inimigo.setNivelDefesa(nivelDefesaOriginalInimigo);
     }
     
+    
+    private void finalizarEfeitoInimigo(){
+        if(efeitoInimigoPendente){
+            restaurarNiveisInimigo();
+            restaurarNiveisProtagonista();
+            efeitoInimigoPendente =  false;
+        }
+    
+    
+    }
+    
+    private void finalizarEfeitoProtagonista(){
+        if(efeitoProtagonistaPendente){
+            if(protagonista instanceof Xerife){
+                restaurarNiveisProtagonista();
+            }else if(protagonista instanceof Bruxo){
+                restaurarNiveisProtagonista();
+                restaurarNiveisInimigo();
+            }
+                efeitoProtagonistaPendente = false;
+        }
+    
+    }
+    
+    
     public void poderEspecialProtagonista(){
         if(!batalhaFinalizada && turnoProtagonista 
-                && protagonista.getEnergia() >= 100){
+                && protagonista.getEnergia() >= 100
+                && !efeitoInimigoPendente){
+           
             protagonista.usarPoderEspecial(inimigo);
+                
+            finalizarEfeitoInimigo();
+            
+            if(protagonista instanceof Alienigena){
+                restaurarNiveisInimigo();
+            }else if(protagonista instanceof Rei){
+                restaurarNiveisProtagonista();
+            }else if(protagonista instanceof Xerife 
+                    || protagonista instanceof Bruxo){
+                efeitoProtagonistaPendente = true;
+            
+            }
+            
+            protagonista.setPoderEspecialAtivado(false);
+            
             verificarFimBatalha();
+            
             if(!batalhaFinalizada){
                 alternarTurno();
             }
         }
     }
-
+    
     public void poderEspecialInimigo(){
-        if(!batalhaFinalizada && !turnoProtagonista){
+            
+        if(!batalhaFinalizada && !turnoProtagonista
+                && !efeitoProtagonistaPendente){
+            
             inimigo.usarPoderEspecial(protagonista);
+            
+            finalizarEfeitoProtagonista();
+            
+            if(inimigo instanceof Titan 
+                    || inimigo instanceof Neuer
+                    || inimigo instanceof Mito){
+                
+                inimigo.setNivelAtaque(nivelAtaqueOriginalInimigo);
+            }
+            efeitoInimigoPendente = true;
+            
             verificarFimBatalha();
             if(!batalhaFinalizada){
                 alternarTurno();

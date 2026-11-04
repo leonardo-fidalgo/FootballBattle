@@ -77,6 +77,10 @@ public abstract class Protagonista extends Personagem {
         this.poderEspecialAtivado = poderEspecialAtivado;
     }
     
-    
+    public void adicionarInimigo(Inimigo inimigo){
+        if (inimigo != null){
+            this.inimigosEnfrentados.add(inimigo);
+        }
+    }
 }
 

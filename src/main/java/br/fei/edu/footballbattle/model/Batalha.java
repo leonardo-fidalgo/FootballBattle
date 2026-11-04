@@ -31,13 +31,15 @@ public class Batalha {
         this.nivelDefesaOriginalInimigo = inimigo.getNivelDefesa();
     }
     
-    public void verificarFimBatalha() {
-    if (!protagonista.estaVivo() || !inimigo.estaVivo()) {
+    private void verificarFimBatalha() {
+    if (!batalhaFinalizada 
+            &&(!protagonista.estaVivo() || !inimigo.estaVivo())) {
         batalhaFinalizada = true;
+        protagonista.adicionarInimigo(inimigo);
     }
 }
  
-    public void alternarTurno() {
+    private void alternarTurno() {
     if (!batalhaFinalizada) {
         turnoProtagonista = !turnoProtagonista;
     }
@@ -90,12 +92,12 @@ public class Batalha {
     }
     
     
-    public void restaurarNiveisProtagonista(){
+    private void restaurarNiveisProtagonista(){
         protagonista.setNivelAtaque(nivelAtaqueOriginalProtagonista);
         protagonista.setNivelDefesa(nivelDefesaOriginalProtagonista);
     }
     
-    public void restaurarNiveisInimigo(){
+    private void restaurarNiveisInimigo(){
         inimigo.setNivelAtaque(nivelAtaqueOriginalInimigo);
         inimigo.setNivelDefesa(nivelDefesaOriginalInimigo);
     }
@@ -177,4 +179,5 @@ public class Batalha {
             }
         }
     }
+    
 }

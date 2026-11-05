@@ -35,7 +35,9 @@ public class Batalha {
     if (!batalhaFinalizada 
             &&(!protagonista.estaVivo() || !inimigo.estaVivo())) {
         batalhaFinalizada = true;
+        if(!inimigo.estaVivo() && protagonista.estaVivo()){
         protagonista.adicionarInimigo(inimigo);
+        }
     }
 }
  

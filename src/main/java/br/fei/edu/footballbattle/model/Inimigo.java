@@ -29,4 +29,12 @@ public abstract class Inimigo extends Personagem {
 
         }
     }
+    
+    @Override
+    public String toString(){
+        return this.getNome();
+    
+    
+    }
+    
 }

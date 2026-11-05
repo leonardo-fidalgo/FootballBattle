@@ -92,6 +92,14 @@ public abstract class  Personagem {
         
         return false;
     }
+
+    public boolean isDefendendo() {
+        return defendendo;
+    }
+
+    public void setDefendendo(boolean defendendo) {
+        this.defendendo = defendendo;
+    }
     
     
     

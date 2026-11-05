@@ -4,6 +4,8 @@
  */
 package br.fei.edu.footballbattle.model;
 
+import java.util.Random;
+
 /**
  *
  * @author SAMSUNG
@@ -35,6 +37,10 @@ public class Batalha {
     if (!batalhaFinalizada 
             &&(!protagonista.estaVivo() || !inimigo.estaVivo())) {
         batalhaFinalizada = true;
+        restaurarNiveisInimigo();
+        restaurarNiveisProtagonista();
+        inimigo.setDefendendo(false); 
+        protagonista.setDefendendo(false); 
         if(!inimigo.estaVivo() && protagonista.estaVivo()){
         protagonista.adicionarInimigo(inimigo);
         }
@@ -44,6 +50,10 @@ public class Batalha {
     private void alternarTurno() {
     if (!batalhaFinalizada) {
         turnoProtagonista = !turnoProtagonista;
+        
+        if (!turnoProtagonista) {
+            executarTurnoInimigo();
+        }
     }
 }
     
@@ -85,7 +95,7 @@ public class Batalha {
     }
     
     public void defesaInimigo(){
-        if(!batalhaFinalizada  && turnoProtagonista){
+        if(!batalhaFinalizada  && !turnoProtagonista){
             inimigo.defender();
             
             finalizarEfeitoProtagonista();
@@ -94,7 +104,7 @@ public class Batalha {
     }
     
     
-    private void restaurarNiveisProtagonista(){
+    public void restaurarNiveisProtagonista(){
         protagonista.setNivelAtaque(nivelAtaqueOriginalProtagonista);
         protagonista.setNivelDefesa(nivelDefesaOriginalProtagonista);
     }
@@ -142,10 +152,13 @@ public class Batalha {
                 restaurarNiveisInimigo();
             }else if(protagonista instanceof Rei){
                 restaurarNiveisProtagonista();
-            }else if(protagonista instanceof Xerife 
-                    || protagonista instanceof Bruxo){
+            }else if(protagonista instanceof Xerife){
                 efeitoProtagonistaPendente = true;
-            
+            }else if(protagonista instanceof Bruxo){
+                protagonista.setNivelAtaque(nivelAtaqueOriginalProtagonista);
+                inimigo.setNivelDefesa(nivelDefesaOriginalInimigo);
+                efeitoProtagonistaPendente = true;
+                
             }
             
             protagonista.setPoderEspecialAtivado(false);
@@ -181,5 +194,48 @@ public class Batalha {
             }
         }
     }
+    
+    public void executarTurnoInimigo() {
+    if (!batalhaFinalizada && !turnoProtagonista) {
+
+        Random random = new Random();
+        int acao = random.nextInt(3);
+
+        switch (acao) {
+            case 0:
+                ataqueInimigo();
+                break;
+
+            case 1:
+                defesaInimigo();
+                break;
+
+            case 2:
+                if (!efeitoProtagonistaPendente) {
+                    poderEspecialInimigo();
+                } else {
+                    ataqueInimigo();
+                }
+                break;
+        }
+    }
+}
+    
+    public boolean isBatalhaFinalizada(){
+        return batalhaFinalizada;
+    }
+
+    public Protagonista getProtagonista() {
+        return protagonista;
+    }
+
+    public Inimigo getInimigo() {
+        return inimigo;
+    }
+
+    public boolean isTurnoProtagonista() {
+        return turnoProtagonista;
+    }
+    
     
 }

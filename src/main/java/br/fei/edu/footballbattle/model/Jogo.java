@@ -77,4 +77,14 @@ public class Jogo {
     public Batalha getBatalha() {
         return batalha;
     }
+
+    public int getNivelAtual() {
+        return nivelAtual;
+    }
+
+    public Protagonista getProtagonista() {
+        return protagonista;
+    }
+    
+    
 }

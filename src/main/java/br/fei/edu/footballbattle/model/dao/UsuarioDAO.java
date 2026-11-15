@@ -4,10 +4,48 @@
  */
 package br.fei.edu.footballbattle.model.dao;
 
+import br.fei.edu.footballbattle.model.Usuario;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author SAMSUNG
  */
 public class UsuarioDAO {
-    
+        private Connection conn;
+
+    public UsuarioDAO(Connection conn) {
+        this.conn = conn;
+    }
+
+        public void inserir(Usuario usuario) throws SQLException{
+            String sql = "INSERT INTO usuario"
+                    + "(nome,sobrenome,nome_usuario, senha) "
+                    + "VALUES (?,?,?,?)";
+            
+            
+        PreparedStatement statement = conn.prepareStatement(sql); 
+        
+        statement.setString(1, usuario.getNome());
+        statement.setString(2, usuario.getSobrenome());
+        statement.setString(3, usuario.getNome_usuario());
+        statement.setString(4, usuario.getSenha());
+
+        statement.execute();
+        }
+        
+        
+        public ResultSet consultar(String nome_usuario) throws SQLException{
+            String sql = "SELECT * FROM usuario WHERE nome_usuario = ?";
+                    
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, nome_usuario);
+            
+            statement.execute();
+            ResultSet resultado = statement.getResultSet();
+            return resultado;
+        }
 }

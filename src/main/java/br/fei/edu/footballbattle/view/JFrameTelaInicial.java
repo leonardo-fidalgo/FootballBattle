@@ -98,6 +98,9 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
 
     private void CadastreseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastreseBtnActionPerformed
         // TODO add your handling code here:
+        JFrameTelaCadastro cadastro = new JFrameTelaCadastro();
+        cadastro.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_CadastreseBtnActionPerformed
 
     private void SenhaPfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaPfActionPerformed

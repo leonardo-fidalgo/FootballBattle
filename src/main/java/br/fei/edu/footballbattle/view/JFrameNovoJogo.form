@@ -52,9 +52,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="PeleBtn">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SAMSUNG\Desktop\Estudos\FEI\3 semestre\Arq. Soft. Prog. Ori. Objetos\ImgProjetoRedimensi\Rei do Futebol no Trono Dourado.png"/>
-        </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[0, 0, 0, 0]"/>
@@ -71,9 +68,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="XerifeBtn">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SAMSUNG\Desktop\Estudos\FEI\3 semestre\Arq. Soft. Prog. Ori. Objetos\ImgProjetoRedimensi\S&#xe9;rgio Ramos, Xerife Merengue do Oeste.png"/>
-        </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[0, 0, 0, 0]"/>
@@ -90,9 +84,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="bruxoBtn">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SAMSUNG\Desktop\Estudos\FEI\3 semestre\Arq. Soft. Prog. Ori. Objetos\ImgProjetoRedimensi\Ronaldinho, o Mago da Bola 10.png"/>
-        </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[0, 0, 0, 0]"/>
@@ -109,9 +100,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="MessiBtn">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SAMSUNG\Downloads\Messi_114x114.png"/>
-        </Property>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
           <Insets value="[0, 0, 0, 0]"/>
@@ -398,7 +386,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\SAMSUNG\Downloads\fundo_footballbattle_954x364.png"/>
+          <Image iconType="3" name="/imagens/fundoSelecao.png"/>
         </Property>
       </Properties>
       <Constraints>

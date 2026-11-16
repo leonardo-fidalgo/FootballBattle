@@ -52,6 +52,7 @@ public class JFrameMenuPrincipal extends javax.swing.JFrame {
         getContentPane().add(ContinuarJogoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 121, 114, -1));
 
         SairBtn.setText("Sair");
+        SairBtn.addActionListener(this::SairBtnActionPerformed);
         getContentPane().add(SairBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 12, -1, 17));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -78,7 +79,17 @@ public class JFrameMenuPrincipal extends javax.swing.JFrame {
 
     private void ContinuarJogoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarJogoBtnActionPerformed
         // TODO add your handling code here:
+        JFrameSaves saves = new JFrameSaves();
+        saves.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ContinuarJogoBtnActionPerformed
+
+    private void SairBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairBtnActionPerformed
+        // TODO add your handling code here:
+        JFrameTelaInicial inicio  = new JFrameTelaInicial();
+        inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_SairBtnActionPerformed
 
     /**
      * @param args the command line arguments

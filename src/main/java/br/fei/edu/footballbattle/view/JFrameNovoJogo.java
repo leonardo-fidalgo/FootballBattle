@@ -4,6 +4,11 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author SAMSUNG
@@ -17,6 +22,24 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
      */
     public JFrameNovoJogo() {
         initComponents();
+        carregarImagem(MessiBtn, "/imagens/messi.png", 114,114);
+        carregarImagem(PeleBtn, "/imagens/Pele.png", 114,114);
+        carregarImagem(XerifeBtn, "/imagens/SergioRamos.png", 114,114);
+        carregarImagem(bruxoBtn, "/imagens/Ronaldinho.png", 114,114);
+    }
+    
+    private void carregarImagem(
+        JButton botao, String caminho, int largura, int altura) {
+
+        ImageIcon icon = new ImageIcon(
+            getClass().getResource(caminho)
+        );
+        
+        Image imagem = icon.getImage().getScaledInstance(
+            largura, altura, Image.SCALE_SMOOTH
+        );
+        
+        botao.setIcon(new ImageIcon(imagem));
     }
 
     /**
@@ -60,25 +83,21 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
         jLabel1.setText("Selecione seu protagonista");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 954, -1));
 
-        PeleBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAMSUNG\\Desktop\\Estudos\\FEI\\3 semestre\\Arq. Soft. Prog. Ori. Objetos\\ImgProjetoRedimensi\\Rei do Futebol no Trono Dourado.png")); // NOI18N
         PeleBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         PeleBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         PeleBtn.setPreferredSize(new java.awt.Dimension(114, 114));
         getContentPane().add(PeleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 212, 114, 114));
 
-        XerifeBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAMSUNG\\Desktop\\Estudos\\FEI\\3 semestre\\Arq. Soft. Prog. Ori. Objetos\\ImgProjetoRedimensi\\Sérgio Ramos, Xerife Merengue do Oeste.png")); // NOI18N
         XerifeBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         XerifeBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         XerifeBtn.setPreferredSize(new java.awt.Dimension(114, 114));
         getContentPane().add(XerifeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 212, 114, 114));
 
-        bruxoBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAMSUNG\\Desktop\\Estudos\\FEI\\3 semestre\\Arq. Soft. Prog. Ori. Objetos\\ImgProjetoRedimensi\\Ronaldinho, o Mago da Bola 10.png")); // NOI18N
         bruxoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bruxoBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         bruxoBtn.setPreferredSize(new java.awt.Dimension(114, 114));
         getContentPane().add(bruxoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 54, 114, 114));
 
-        MessiBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAMSUNG\\Downloads\\Messi_114x114.png")); // NOI18N
         MessiBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         MessiBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         MessiBtn.setPreferredSize(new java.awt.Dimension(114, 114));
@@ -210,7 +229,7 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
         jLabel23.setBackground(new java.awt.Color(0, 0, 0));
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setIcon(new javax.swing.ImageIcon("C:\\Users\\SAMSUNG\\Downloads\\fundo_footballbattle_954x364.png")); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundoSelecao.png"))); // NOI18N
         getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 370));
 
         pack();
@@ -246,6 +265,7 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new JFrameNovoJogo().setVisible(true));
 
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MessiBtn;

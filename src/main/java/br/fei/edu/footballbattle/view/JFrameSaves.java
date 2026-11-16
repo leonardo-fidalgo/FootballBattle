@@ -71,6 +71,9 @@ public class JFrameSaves extends javax.swing.JFrame {
 
     private void VoltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBtnActionPerformed
         // TODO add your handling code here:
+        JFrameMenuPrincipal menu = new JFrameMenuPrincipal();
+        menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_VoltarBtnActionPerformed
 
     /**

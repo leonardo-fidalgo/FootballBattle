@@ -4,6 +4,10 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.UsuarioController;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author SAMSUNG
@@ -35,9 +39,9 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         NomeTf = new javax.swing.JTextField();
         SobrenomeTf = new javax.swing.JTextField();
-        SenhaTf = new javax.swing.JTextField();
-        SenhTf = new javax.swing.JTextField();
+        UserTf = new javax.swing.JTextField();
         CadastrarBtn = new javax.swing.JButton();
+        SenhaPf = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,30 +58,33 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nome:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 81, 41, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 81, 41, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Sobrenome:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 115, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 115, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Usuario:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 149, 53, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 149, 53, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Senha:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 183, 41, -1));
-        getContentPane().add(NomeTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 78, 107, -1));
-        getContentPane().add(SobrenomeTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 112, 107, -1));
-        getContentPane().add(SenhaTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 146, 107, -1));
-        getContentPane().add(SenhTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 180, 107, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 183, 41, -1));
+        getContentPane().add(NomeTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 78, 110, -1));
+        getContentPane().add(SobrenomeTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 112, 110, -1));
+        getContentPane().add(UserTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 146, 110, -1));
 
         CadastrarBtn.setText("Cadastrar");
         CadastrarBtn.addActionListener(this::CadastrarBtnActionPerformed);
-        getContentPane().add(CadastrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(148, 234, 105, -1));
+        getContentPane().add(CadastrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 234, 105, -1));
+
+        SenhaPf.setText("jPasswordField1");
+        SenhaPf.addActionListener(this::SenhaPfActionPerformed);
+        getContentPane().add(SenhaPf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 110, -1));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,7 +97,12 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
 
     private void CadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarBtnActionPerformed
         // TODO add your handling code here:
+        //UsuarioController.cadastrar();
     }//GEN-LAST:event_CadastrarBtnActionPerformed
+
+    private void SenhaPfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaPfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SenhaPfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,9 +132,9 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastrarBtn;
     private javax.swing.JTextField NomeTf;
-    private javax.swing.JTextField SenhTf;
-    private javax.swing.JTextField SenhaTf;
+    private javax.swing.JPasswordField SenhaPf;
     private javax.swing.JTextField SobrenomeTf;
+    private javax.swing.JTextField UserTf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -130,4 +142,29 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
+    private UsuarioController usuarioController;
+    
+    public JTextField getNomeTf() {
+        return NomeTf;
+    }
+
+    public JPasswordField getSenhaPf() {
+        return SenhaPf;
+    }
+
+
+    public JTextField getSobrenomeTf() {
+        return SobrenomeTf;
+    }
+
+    public JTextField getUserTf() {
+        return UserTf;
+    }
+
+    public void setUsuarioController(UsuarioController usuarioController) {
+        this.usuarioController = usuarioController;
+    }
+    
+    
+
 }

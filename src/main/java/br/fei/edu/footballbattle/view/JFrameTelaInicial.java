@@ -4,6 +4,10 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.UsuarioController;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author SAMSUNG
@@ -56,7 +60,7 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 58, -1));
 
         UsuarioTf.addActionListener(this::UsuarioTfActionPerformed);
-        getContentPane().add(UsuarioTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 146, -1));
+        getContentPane().add(UsuarioTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 150, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,8 +84,8 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
         jLabel5.setText("Ainda não tem uma conta? ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 155, -1));
 
-        SenhaPf.addActionListener(this::SenhaPfActionPerformed);
-        getContentPane().add(SenhaPf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 146, -1));
+        SenhaPf.setText("jPasswordField1");
+        getContentPane().add(SenhaPf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 150, -1));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoMenu (1).png"))); // NOI18N
@@ -98,14 +102,8 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
 
     private void CadastreseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastreseBtnActionPerformed
         // TODO add your handling code here:
-        JFrameTelaCadastro cadastro = new JFrameTelaCadastro();
-        cadastro.setVisible(true);
-        this.dispose();
+       // UsuarioController.cadastrese();
     }//GEN-LAST:event_CadastreseBtnActionPerformed
-
-    private void SenhaPfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaPfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SenhaPfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,4 +143,23 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton loginBtn;
     // End of variables declaration//GEN-END:variables
+    private UsuarioController usuarioController;
+
+    
+    public JPasswordField getSenhaPf() {
+        return SenhaPf;
+    }
+
+    public JTextField getUsuarioTf() {
+        return UsuarioTf;
+    }
+
+    public void setUsuarioController(UsuarioController usuarioController) {
+        this.usuarioController = usuarioController;
+    }
+
+    
+
+
+
 }

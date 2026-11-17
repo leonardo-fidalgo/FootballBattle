@@ -18,6 +18,7 @@ public class Jogo {
     private Batalha batalha;
     private boolean jogoFinalizado = false;
     private boolean jogoIniciado = false;
+    
     public Jogo(Protagonista protagonista) {
         this.protagonista = protagonista;
         this.nivelAtual = 1;
@@ -84,6 +85,14 @@ public class Jogo {
 
     public Protagonista getProtagonista() {
         return protagonista;
+    }
+
+    public void setNivelAtual(int nivelAtual) {
+        this.nivelAtual = nivelAtual;
+    }
+
+    public void setProtagonista(Protagonista protagonista) {
+        this.protagonista = protagonista;
     }
     
     

@@ -4,10 +4,18 @@
  */
 package br.fei.edu.footballbattle.controller;
 
+import br.fei.edu.footballbattle.view.JFrameSaves;
+
 /**
  *
  * @author SAMSUNG
  */
 public class SaveController {
+    private JFrameSaves save;
+
+    public SaveController(JFrameSaves save) {
+        this.save = save;
+    }
+    
     
 }

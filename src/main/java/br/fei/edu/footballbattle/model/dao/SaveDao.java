@@ -23,15 +23,16 @@ public class SaveDao {
     
     public void inserir(Save save) throws SQLException{
             String sql = "INSERT INTO Save"
-                    + "(nomeUsuario, nivelAtual, nomeProtagonista) "
-                    + "VALUES (?,?,?)";
+                    + "(nomeSave, nomeUsuario, nivelAtual, nomeProtagonista) "
+                    + "VALUES (?,?,?,?)";
             
             
         PreparedStatement statement = conn.prepareStatement(sql); 
         
-        statement.setString(1, save.getNomeUsuario());
-        statement.setInt(2, save.getNivelAtual());
-        statement.setString(3, save.getProtagonista().getNome());
+        statement.setString(1, save.getNomeSave());
+        statement.setString(2, save.getNomeUsuario());
+        statement.setInt(3, save.getNivelAtual());
+        statement.setString(4, save.getProtagonista().getNome());
 
         statement.execute();
         statement.close();

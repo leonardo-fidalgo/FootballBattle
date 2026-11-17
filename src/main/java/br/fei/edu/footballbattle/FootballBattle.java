@@ -4,6 +4,14 @@
 
 package br.fei.edu.footballbattle;
 
+import br.fei.edu.footballbattle.controller.JogoController;
+import br.fei.edu.footballbattle.controller.UsuarioController;
+import br.fei.edu.footballbattle.model.dao.Conexao;
+import br.fei.edu.footballbattle.view.JFrameMenuPrincipal;
+import br.fei.edu.footballbattle.view.JFrameTelaCadastro;
+import br.fei.edu.footballbattle.view.JFrameTelaInicial;
+import java.sql.SQLException;
+
 /**
  *
  * @author SAMSUNG
@@ -11,6 +19,25 @@ package br.fei.edu.footballbattle;
 public class FootballBattle {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Conexao c = new Conexao();
+        try{
+            c.getConnection();
+            System.out.println("Conexao com BD bem sucedida");
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        
+        JFrameTelaInicial telaInicial = new JFrameTelaInicial();
+        JFrameTelaCadastro telaCadastro = new JFrameTelaCadastro();
+        
+        UsuarioController usuarioController = new UsuarioController(telaInicial,
+            telaCadastro, c);
+        
+        telaInicial.setUsuarioController(usuarioController);
+        telaCadastro.setUsuarioController(usuarioController);
+        
+        telaInicial.setVisible(true);
     }
 }

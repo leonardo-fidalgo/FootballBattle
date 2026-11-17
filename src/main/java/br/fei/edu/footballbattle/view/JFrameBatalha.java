@@ -4,6 +4,7 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.BatalhaController;
 import java.awt.Color;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -38,7 +39,7 @@ public class JFrameBatalha extends javax.swing.JFrame {
         
     }
 
-    private void carregarImagem(
+    public void carregarImagem(
         JLabel label, String caminho, int largura, int altura) {
 
     ImageIcon icon = new ImageIcon(
@@ -171,4 +172,19 @@ public class JFrameBatalha extends javax.swing.JFrame {
     private javax.swing.JLabel lblvidaInim;
     private javax.swing.JLabel lblvidaProt2;
     // End of variables declaration//GEN-END:variables
+    private BatalhaController batalhaController;
+
+    public void setBatalhaController(BatalhaController batalhaController) {
+        this.batalhaController = batalhaController;
+    }
+
+    public JLabel getLblInim() {
+        return LblInim;
+    }
+
+    public JLabel getLblProt() {
+        return LblProt;
+    }
+    
+    
 }

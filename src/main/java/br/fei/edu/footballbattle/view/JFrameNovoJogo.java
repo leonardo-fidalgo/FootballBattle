@@ -4,6 +4,11 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.JogoController;
+import br.fei.edu.footballbattle.model.Alienigena;
+import br.fei.edu.footballbattle.model.Bruxo;
+import br.fei.edu.footballbattle.model.Rei;
+import br.fei.edu.footballbattle.model.Xerife;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -86,16 +91,19 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
         PeleBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         PeleBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         PeleBtn.setPreferredSize(new java.awt.Dimension(114, 114));
+        PeleBtn.addActionListener(this::PeleBtnActionPerformed);
         getContentPane().add(PeleBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 212, 114, 114));
 
         XerifeBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         XerifeBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         XerifeBtn.setPreferredSize(new java.awt.Dimension(114, 114));
+        XerifeBtn.addActionListener(this::XerifeBtnActionPerformed);
         getContentPane().add(XerifeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 212, 114, 114));
 
         bruxoBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bruxoBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         bruxoBtn.setPreferredSize(new java.awt.Dimension(114, 114));
+        bruxoBtn.addActionListener(this::bruxoBtnActionPerformed);
         getContentPane().add(bruxoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 54, 114, 114));
 
         MessiBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -237,8 +245,23 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
 
     private void MessiBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MessiBtnActionPerformed
         // TODO add your handling code here:
-        
+        jogoController.iniciarPrimeiraBatalha(new Alienigena());
     }//GEN-LAST:event_MessiBtnActionPerformed
+
+    private void bruxoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bruxoBtnActionPerformed
+        // TODO add your handling code here:
+        jogoController.iniciarPrimeiraBatalha(new Bruxo());
+    }//GEN-LAST:event_bruxoBtnActionPerformed
+
+    private void PeleBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PeleBtnActionPerformed
+        // TODO add your handling code here:
+        jogoController.iniciarPrimeiraBatalha(new Rei());
+    }//GEN-LAST:event_PeleBtnActionPerformed
+
+    private void XerifeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XerifeBtnActionPerformed
+        // TODO add your handling code here:
+        jogoController.iniciarPrimeiraBatalha(new Xerife());
+    }//GEN-LAST:event_XerifeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,4 +311,11 @@ public class JFrameNovoJogo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
+    private JogoController jogoController;
+
+    public void setJogoController(JogoController jogoController) {
+        this.jogoController = jogoController;
+    }
+    
+    
 }

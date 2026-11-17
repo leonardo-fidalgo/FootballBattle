@@ -15,6 +15,10 @@ public class Save {
     private int nivelAtual;
     private Protagonista protagonista;
 
+    public Save(){
+    
+    }
+    
     public Save(Jogo jogo, String nomeUsuario, String nomeSave){
         this.nivelAtual = jogo.getNivelAtual();
         this.protagonista = jogo.getProtagonista();
@@ -40,6 +44,26 @@ public class Save {
 
     public String getNomeSave() {
         return nomeSave;
+    }
+
+    public void setNomeSave(String nomeSave) {
+        this.nomeSave = nomeSave;
+    }
+
+    public void setIdSave(int idSave) {
+        this.idSave = idSave;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public void setNivelAtual(int nivelAtual) {
+        this.nivelAtual = nivelAtual;
+    }
+
+    public void setProtagonista(Protagonista protagonista) {
+        this.protagonista = protagonista;
     }
 
     

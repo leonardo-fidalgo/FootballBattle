@@ -82,7 +82,6 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
         CadastrarBtn.addActionListener(this::CadastrarBtnActionPerformed);
         getContentPane().add(CadastrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 234, 105, -1));
 
-        SenhaPf.setText("jPasswordField1");
         SenhaPf.addActionListener(this::SenhaPfActionPerformed);
         getContentPane().add(SenhaPf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 110, -1));
 
@@ -97,7 +96,7 @@ public class JFrameTelaCadastro extends javax.swing.JFrame {
 
     private void CadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarBtnActionPerformed
         // TODO add your handling code here:
-        //UsuarioController.cadastrar();
+        usuarioController.cadastrar();
     }//GEN-LAST:event_CadastrarBtnActionPerformed
 
     private void SenhaPfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaPfActionPerformed

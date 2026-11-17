@@ -4,6 +4,8 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.JogoController;
+
 /**
  *
  * @author SAMSUNG
@@ -75,20 +77,17 @@ public class JFrameMenuPrincipal extends javax.swing.JFrame {
 
     private void NovoJogoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoJogoBtnActionPerformed
         // TODO add your handling code here:
+        jogoController.novoJogo();
     }//GEN-LAST:event_NovoJogoBtnActionPerformed
 
     private void ContinuarJogoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarJogoBtnActionPerformed
         // TODO add your handling code here:
-        JFrameSaves saves = new JFrameSaves();
-        saves.setVisible(true);
-        this.dispose();
+        jogoController.continuarJogo();
     }//GEN-LAST:event_ContinuarJogoBtnActionPerformed
 
     private void SairBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairBtnActionPerformed
         // TODO add your handling code here:
-        JFrameTelaInicial inicio  = new JFrameTelaInicial();
-        inicio.setVisible(true);
-        this.dispose();
+        jogoController.sair();
     }//GEN-LAST:event_SairBtnActionPerformed
 
     /**
@@ -125,4 +124,11 @@ public class JFrameMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     // End of variables declaration//GEN-END:variables
+   private JogoController jogoController;
+
+    public void setJogoController(JogoController jogoController) {
+        this.jogoController = jogoController;
+    }
+   
+   
 }

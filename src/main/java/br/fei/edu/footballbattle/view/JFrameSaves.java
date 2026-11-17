@@ -4,6 +4,8 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.SaveController;
+
 /**
  *
  * @author SAMSUNG
@@ -107,4 +109,11 @@ public class JFrameSaves extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    private SaveController saveController;
+
+    public void setSaveController(SaveController saveController) {
+        this.saveController = saveController;
+    }
+    
+    
 }

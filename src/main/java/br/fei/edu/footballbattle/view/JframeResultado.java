@@ -8,14 +8,14 @@ package br.fei.edu.footballbattle.view;
  *
  * @author SAMSUNG
  */
-public class JframeResultado extends javax.swing.JFrame {
+public class JFrameResultado extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JframeResultado.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(JFrameResultado.class.getName());
 
     /**
      * Creates new form JframeResultado
      */
-    public JframeResultado() {
+    public JFrameResultado() {
         initComponents();
     }
 
@@ -91,7 +91,7 @@ public class JframeResultado extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new JframeResultado().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new JFrameResultado().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

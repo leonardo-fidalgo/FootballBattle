@@ -73,6 +73,7 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         loginBtn.setText("Login");
+        loginBtn.addActionListener(this::loginBtnActionPerformed);
         getContentPane().add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
 
         CadastreseBtn.setText("Cadastre-se");
@@ -84,7 +85,7 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
         jLabel5.setText("Ainda não tem uma conta? ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 155, -1));
 
-        SenhaPf.setText("jPasswordField1");
+        SenhaPf.addActionListener(this::SenhaPfActionPerformed);
         getContentPane().add(SenhaPf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 150, -1));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -102,8 +103,17 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
 
     private void CadastreseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastreseBtnActionPerformed
         // TODO add your handling code here:
-       // UsuarioController.cadastrese();
+        usuarioController.cadastrese();
     }//GEN-LAST:event_CadastreseBtnActionPerformed
+
+    private void SenhaPfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaPfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SenhaPfActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        usuarioController.login();
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     /**
      * @param args the command line arguments

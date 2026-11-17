@@ -38,11 +38,12 @@ public class UsuarioDAO {
         }
         
         
-        public ResultSet consultar(String nome_usuario) throws SQLException{
-            String sql = "SELECT * FROM usuario WHERE nome_usuario = ?";
+        public ResultSet consultar(String nome_usuario, String senha) throws SQLException{
+            String sql = "SELECT * FROM usuario WHERE nome_usuario = ? AND senha = ?";
                     
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, nome_usuario);
+            statement.setString(2, senha);
             
             statement.execute();
             ResultSet resultado = statement.getResultSet();

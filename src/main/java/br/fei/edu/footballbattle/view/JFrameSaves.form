@@ -40,8 +40,10 @@
         <Component class="javax.swing.JTable" name="SavesTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="1" rowCount="10">
-                <Column editable="true" title="Seus jogos" type="java.lang.Object"/>
+              <Table columnCount="3" rowCount="0">
+                <Column editable="true" title="Nome do Save" type="java.lang.String"/>
+                <Column editable="true" title="Protagonista" type="java.lang.String"/>
+                <Column editable="true" title="Fase" type="java.lang.Integer"/>
               </Table>
             </Property>
           </Properties>

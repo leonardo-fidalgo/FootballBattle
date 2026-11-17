@@ -4,10 +4,18 @@
  */
 package br.fei.edu.footballbattle.controller;
 
+import br.fei.edu.footballbattle.model.Batalha;
+import br.fei.edu.footballbattle.model.Jogo;
+
 /**
  *
  * @author SAMSUNG
  */
 public class BatalhaController {
     
+    private Batalha batalha;
+
+    public BatalhaController(Jogo jogo) {
+        this.batalha = jogo.getBatalha();
+    }
 }

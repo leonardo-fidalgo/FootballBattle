@@ -57,7 +57,7 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Usuario:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 58, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 82, 58, -1));
 
         UsuarioTf.addActionListener(this::UsuarioTfActionPerformed);
         getContentPane().add(UsuarioTf, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 150, -1));
@@ -78,7 +78,7 @@ public class JFrameTelaInicial extends javax.swing.JFrame {
 
         CadastreseBtn.setText("Cadastre-se");
         CadastreseBtn.addActionListener(this::CadastreseBtnActionPerformed);
-        getContentPane().add(CadastreseBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
+        getContentPane().add(CadastreseBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 240, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));

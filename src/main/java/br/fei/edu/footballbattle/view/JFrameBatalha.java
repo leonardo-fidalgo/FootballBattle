@@ -92,7 +92,7 @@ public class JFrameBatalha extends javax.swing.JFrame {
         getContentPane().add(AtaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 327, 82, -1));
 
         DefBtn.setText("Defender");
-        getContentPane().add(DefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 327, 82, -1));
+        getContentPane().add(DefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 327, 120, -1));
 
         SuperBtn.setText("Poder Especial");
         getContentPane().add(SuperBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 356, 176, -1));

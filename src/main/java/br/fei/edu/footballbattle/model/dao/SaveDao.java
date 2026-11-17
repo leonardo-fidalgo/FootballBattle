@@ -14,16 +14,17 @@ import java.sql.SQLException;
  *
  * @author SAMSUNG
  */
-public class SaveDao {
+public class SaveDAO {
     private Connection conn;
 
-    public SaveDao(Connection conn) {
+    public SaveDAO(Connection conn) {
         this.conn = conn;
     }
     
     public void inserir(Save save) throws SQLException{
-            String sql = "INSERT INTO Save"
-                    + "(nomeSave, nomeUsuario, nivelAtual, nomeProtagonista) "
+            String sql = "INSERT INTO save "
+                    + "(\"nomeSave\", \"nomeUsuario\", \"nivelAtual\", "
+                    + "\"nomeProtagonista\") "
                     + "VALUES (?,?,?,?)";
             
             
@@ -39,11 +40,13 @@ public class SaveDao {
         }
     
     public ResultSet consultar(String nomeUsuario) throws SQLException{
-        String sql = "SELECT * FROM Save WHERE nomeUsuario = ?";
+        String sql = "SELECT * FROM save WHERE \"nomeUsuario\" = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, nomeUsuario);
+        
         statement.execute();
         ResultSet resultado = statement.getResultSet();
+        
         return resultado;
     }
     

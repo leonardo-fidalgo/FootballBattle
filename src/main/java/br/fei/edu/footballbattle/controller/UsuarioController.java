@@ -102,7 +102,8 @@ public class UsuarioController {
             
                 if(encontrou){
                     JFrameMenuPrincipal menu = new JFrameMenuPrincipal();
-                    JogoController jc = new JogoController(menu, this.telaInicial);
+                    JogoController jc = new JogoController(menu, 
+                            this.telaInicial,nome_usuario ,this.conexao);
 
                     this.telaInicial.setVisible(false);
 

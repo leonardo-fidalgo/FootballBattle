@@ -10,12 +10,15 @@ import br.fei.edu.footballbattle.model.Protagonista;
 import br.fei.edu.footballbattle.model.Rei;
 import br.fei.edu.footballbattle.model.Save;
 import br.fei.edu.footballbattle.model.Xerife;
+import br.fei.edu.footballbattle.model.dao.Conexao;
+import br.fei.edu.footballbattle.model.dao.SaveDAO;
 import br.fei.edu.footballbattle.view.JFrameBatalha;
 import br.fei.edu.footballbattle.view.JFrameMenuPrincipal;
 import br.fei.edu.footballbattle.view.JFrameNovoJogo;
 import br.fei.edu.footballbattle.view.JFrameResultado;
 import br.fei.edu.footballbattle.view.JFrameSaves;
 import br.fei.edu.footballbattle.view.JFrameTelaInicial;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,9 +33,17 @@ public class JogoController {
     private JFrameBatalha telaBatalha;
     private Save save;
     private Jogo jogo;
-    public JogoController(JFrameMenuPrincipal menu, JFrameTelaInicial inicio) {
+    private SaveDAO saveDAO;
+    private String nomeUsuario;
+    private Conexao con;
+    
+    public JogoController (JFrameMenuPrincipal menu, JFrameTelaInicial inicio, 
+            String nomeUsuario,Conexao con) throws SQLException{
         this.telaMenu = menu;
         this.telaInicio = inicio;
+        this.nomeUsuario = nomeUsuario;
+        this.saveDAO = new SaveDAO(con.getConnection());
+        this.con = con;
     }
     
     public void sair(){ 
@@ -41,12 +52,15 @@ public class JogoController {
     
     }
     
-    public void continuarJogo(){
+    public void continuarJogo()throws SQLException{
+        
         JFrameSaves saves = new JFrameSaves();
         
-        SaveController sc = new SaveController(saves);
+        SaveController sc = new SaveController(saves, this.nomeUsuario, 
+                this.telaMenu, this.con);
         
         saves.setSaveController(sc);
+        sc.mostrarSaves();
         this.telaMenu.setVisible(false);
         saves.setVisible(true);
     }
@@ -60,6 +74,7 @@ public class JogoController {
         }
         this.save = new Save();
         this.save.setNomeSave(nomeSave);
+        this.save.setNomeUsuario(nomeUsuario);
         
         this.telaSelecao  = new JFrameNovoJogo();
 
@@ -110,9 +125,27 @@ public class JogoController {
     
     public void iniciarPrimeiraBatalha(Protagonista protagonista){
         this.jogo = new Jogo(protagonista);
+    
+        this.save.setProtagonista(protagonista);
+        this.save.setNivelAtual(this.jogo.getNivelAtual());
+        
+        try {
+            this.saveDAO.inserir(this.save);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+            JOptionPane.showMessageDialog(
+                this.telaSelecao,
+                "Erro ao criar o save!",
+                "ERRO",
+                JOptionPane.ERROR_MESSAGE
+            );
+            return;
+        }
+        
         this.telaBatalha = new JFrameBatalha();
         
-        BatalhaController bc = new BatalhaController();
+        BatalhaController bc = new BatalhaController(this.jogo);
         this.telaBatalha.setBatalhaController(bc);
         
         alterarImagemProt(protagonista);
@@ -120,7 +153,6 @@ public class JogoController {
         
         this.telaSelecao.setVisible(false);
         this.telaBatalha.setVisible(true);
-    
-        //falta salvar no banco
+        
     }
 }

@@ -51,7 +51,7 @@ public class JFrameMenuPrincipal extends javax.swing.JFrame {
 
         ContinuarJogoBtn.setText("Continuar jogo");
         ContinuarJogoBtn.addActionListener(this::ContinuarJogoBtnActionPerformed);
-        getContentPane().add(ContinuarJogoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 121, 114, -1));
+        getContentPane().add(ContinuarJogoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 121, 170, -1));
 
         SairBtn.setText("Sair");
         SairBtn.addActionListener(this::SairBtnActionPerformed);

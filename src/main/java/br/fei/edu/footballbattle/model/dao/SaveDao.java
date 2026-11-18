@@ -39,6 +39,7 @@ public class SaveDAO {
         statement.close();
         }
     
+    //Consulta todos os saves do usuario
     public ResultSet consultar(String nomeUsuario) throws SQLException{
         String sql = "SELECT * FROM save WHERE \"nomeUsuario\" = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
@@ -50,8 +51,25 @@ public class SaveDAO {
         return resultado;
     }
     
+    //consulta as informações especificamente do save passado
+    public ResultSet consultarPorId(int idSave, String nomeUsuario)
+        throws SQLException {
+
+        String sql = "SELECT * FROM save "
+                + "WHERE id_save = ? AND \"nomeUsuario\" = ?";
+        
+        PreparedStatement statement = conn.prepareStatement(sql);
+        
+        statement.setInt(1, idSave);
+        statement.setString(2, nomeUsuario);
+        
+        ResultSet resultado = statement.executeQuery();
+        
+        return resultado;
+    }
+    
     public void excluir(int idSave) throws SQLException {
-    String sql = "DELETE FROM Save WHERE id_save = ?";
+    String sql = "DELETE FROM save WHERE id_save = ?";
 
     PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -62,8 +80,8 @@ public class SaveDAO {
     }
 
     public void atualizar(Save save) throws SQLException {
-    String sql = "UPDATE Save "
-               + "SET nivelAtual = ?, nomeProtagonista = ? "
+    String sql = "UPDATE save "
+               + "SET \"nivelAtual\" = ?, \"nomeProtagonista\" = ? "
                + "WHERE id_save = ?";
 
     PreparedStatement statement = conn.prepareStatement(sql);

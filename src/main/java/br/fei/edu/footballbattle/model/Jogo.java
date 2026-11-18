@@ -95,5 +95,27 @@ public class Jogo {
         this.protagonista = protagonista;
     }
     
-    
+    //Necessário pois ao buscar o save um novo objeto será instanciado
+    public void restaurarProgresso(int nivelSalvo) {
+        if (nivelSalvo < 1 || nivelSalvo > 5) {
+            throw new IllegalArgumentException("Nível inválido!");
+        }
+        
+        List<Inimigo> inimigosDoJogo = List.of(
+                new Titan(),
+                new Superman(),
+                new AranhaNegra(),
+                new Neuer(),
+                new Mito()
+        );
+        
+        protagonista.getInimigosEnfrentados().clear();
+        
+        for (int i = 0; i < nivelSalvo - 1; i++) {
+            protagonista.adicionarInimigo(inimigosDoJogo.get(i));
+        }
+        
+        this.nivelAtual = nivelSalvo;
+    }
+
 }

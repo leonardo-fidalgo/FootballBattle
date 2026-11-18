@@ -4,6 +4,7 @@
  */
 package br.fei.edu.footballbattle.controller;
 
+import br.fei.edu.footballbattle.model.Alienigena;
 import br.fei.edu.footballbattle.model.Bruxo;
 import br.fei.edu.footballbattle.model.Jogo;
 import br.fei.edu.footballbattle.model.Protagonista;
@@ -18,6 +19,7 @@ import br.fei.edu.footballbattle.view.JFrameNovoJogo;
 import br.fei.edu.footballbattle.view.JFrameResultado;
 import br.fei.edu.footballbattle.view.JFrameSaves;
 import br.fei.edu.footballbattle.view.JFrameTelaInicial;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -36,6 +38,7 @@ public class JogoController {
     private SaveDAO saveDAO;
     private String nomeUsuario;
     private Conexao con;
+    private JFrameSaves telaSaves;
     
     public JogoController (JFrameMenuPrincipal menu, JFrameTelaInicial inicio, 
             String nomeUsuario,Conexao con) throws SQLException{
@@ -55,9 +58,9 @@ public class JogoController {
     public void continuarJogo()throws SQLException{
         
         JFrameSaves saves = new JFrameSaves();
-        
+        this.telaSaves = saves;
         SaveController sc = new SaveController(saves, this.nomeUsuario, 
-                this.telaMenu, this.con);
+                this.telaMenu, this.con, this);
         
         saves.setSaveController(sc);
         sc.mostrarSaves();
@@ -153,6 +156,65 @@ public class JogoController {
         
         this.telaSelecao.setVisible(false);
         this.telaBatalha.setVisible(true);
+    }
+    
+    public void carregarJogo(int idSave) throws SQLException {
+        ResultSet resultado = saveDAO.consultarPorId(idSave, nomeUsuario);
         
+        if (resultado.next()) {
+            int nivel = resultado.getInt("nivelAtual");
+            String nomeProtagonista = resultado.getString("nomeProtagonista");
+            String nomeSave = resultado.getString("nomeSave");
+            
+            Protagonista protagonista = null;
+                
+            switch (nomeProtagonista) {
+                case "Messi - O ET":
+                    protagonista = new Alienigena();
+                    break;
+                    
+                case "Pelé - O Rei":
+                    protagonista = new Rei();
+                    break;
+                    
+                case "R10 - O Bruxo":
+                    protagonista = new Bruxo();
+                    break;
+                    
+                case "Sérgio Ramos - O Xerife":
+                    protagonista = new Xerife();
+                    break;
+            }
+            
+            if (protagonista == null) {
+                throw new IllegalArgumentException("Protagonista desconhecido!");
+            }
+        
+            this.save = new Save();
+            this.save.setIdSave(idSave);
+            this.save.setNomeSave(nomeSave);
+            this.save.setNomeUsuario(nomeUsuario);
+            this.save.setProtagonista(protagonista);
+            this.save.setNivelAtual(nivel);
+        
+            this.jogo = new Jogo(protagonista);
+            this.jogo.restaurarProgresso(nivel);
+            this.jogo.comecarBatalha();
+            
+            this.telaBatalha = new JFrameBatalha();
+
+            BatalhaController bc = new BatalhaController(this.jogo);
+            this.telaBatalha.setBatalhaController(bc);
+            
+            alterarImagemProt(protagonista);
+            alterarImagemInim();
+            
+            this.telaSaves.setVisible(false);
+            this.telaBatalha.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(telaMenu, "Save não encontrado!");
+        }
+        
+        resultado.getStatement().close();
     }
 }

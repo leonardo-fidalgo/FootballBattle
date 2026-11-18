@@ -5,6 +5,8 @@
 package br.fei.edu.footballbattle.view;
 
 import br.fei.edu.footballbattle.controller.JogoController;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -82,7 +84,15 @@ public class JFrameMenuPrincipal extends javax.swing.JFrame {
 
     private void ContinuarJogoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContinuarJogoBtnActionPerformed
         // TODO add your handling code here:
-        jogoController.continuarJogo();
+        try {
+            jogoController.continuarJogo();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this,
+            "Erro ao carregar os saves!",
+            "Erro",
+            JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }   
     }//GEN-LAST:event_ContinuarJogoBtnActionPerformed
 
     private void SairBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SairBtnActionPerformed

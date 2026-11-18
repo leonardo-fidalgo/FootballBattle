@@ -5,7 +5,10 @@
 package br.fei.edu.footballbattle.view;
 
 import br.fei.edu.footballbattle.controller.SaveController;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -20,6 +23,10 @@ public class JFrameSaves extends javax.swing.JFrame {
      */
     public JFrameSaves() {
         initComponents();
+        SavesTable.setRowSelectionAllowed(true);
+        SavesTable.setColumnSelectionAllowed(false);
+        SavesTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        SavesTable.removeColumn(SavesTable.getColumnModel().getColumn(3));
     }
 
     /**
@@ -33,7 +40,9 @@ public class JFrameSaves extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         SavesTable = new javax.swing.JTable();
-        VoltarBtn = new javax.swing.JButton();
+        JogarBtn = new javax.swing.JButton();
+        VoltarBtn1 = new javax.swing.JButton();
+        ExcluirBtn2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,11 +53,11 @@ public class JFrameSaves extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome do Save", "Protagonista", "Fase"
+                "Nome do Save", "Protagonista", "Fase", "id"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -59,9 +68,18 @@ public class JFrameSaves extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 18, 351, 240));
 
-        VoltarBtn.setText("Voltar");
-        VoltarBtn.addActionListener(this::VoltarBtnActionPerformed);
-        getContentPane().add(VoltarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 264, 75, 17));
+        JogarBtn.setText("Jogar");
+        JogarBtn.addActionListener(this::JogarBtnActionPerformed);
+        getContentPane().add(JogarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 264, 75, 17));
+
+        VoltarBtn1.setText("Voltar");
+        VoltarBtn1.addActionListener(this::VoltarBtn1ActionPerformed);
+        getContentPane().add(VoltarBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 264, 75, 17));
+
+        ExcluirBtn2.setText("Excluir");
+        ExcluirBtn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ExcluirBtn2.addActionListener(this::ExcluirBtn2ActionPerformed);
+        getContentPane().add(ExcluirBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 264, 75, 17));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoMenu (1).png"))); // NOI18N
@@ -71,10 +89,37 @@ public class JFrameSaves extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void VoltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBtnActionPerformed
+    private void JogarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JogarBtnActionPerformed
+        // TODO add your handling code here:
+        try{
+            saveController.jogar();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(this,
+            "Erro!",
+            "Erro",
+            JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_JogarBtnActionPerformed
+
+    private void VoltarBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarBtn1ActionPerformed
         // TODO add your handling code here:
         saveController.voltar();
-    }//GEN-LAST:event_VoltarBtnActionPerformed
+    }//GEN-LAST:event_VoltarBtn1ActionPerformed
+
+    private void ExcluirBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirBtn2ActionPerformed
+        // TODO add your handling code here:
+        try{
+            saveController.excluir();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(this,
+            "Erro ao excluir!",
+            "Erro",
+            JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_ExcluirBtn2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,8 +147,10 @@ public class JFrameSaves extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ExcluirBtn2;
+    private javax.swing.JButton JogarBtn;
     private javax.swing.JTable SavesTable;
-    private javax.swing.JButton VoltarBtn;
+    private javax.swing.JButton VoltarBtn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
@@ -116,6 +163,5 @@ public class JFrameSaves extends javax.swing.JFrame {
     public JTable getSavesTable() {
         return SavesTable;
     }
-    
     
 }

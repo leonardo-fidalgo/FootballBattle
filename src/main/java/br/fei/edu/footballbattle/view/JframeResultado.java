@@ -33,8 +33,8 @@ public class JFrameResultado extends javax.swing.JFrame {
         } else if (ultimaFase) {
             jLabel1.setText("VITÓRIA FINAL!");
             jLabel2.setText("Você venceu todos os chefes!");
-            NextBtn.setEnabled(false);
-            
+            NextBtn.setVisible(false);
+            SairBtn.setText("Sair");
         } else {
             jLabel1.setText("VITÓRIA");
             jLabel2.setText("Você derrotou o inimigo!");

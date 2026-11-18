@@ -39,6 +39,14 @@ public class JFrameBatalha extends javax.swing.JFrame {
         
     }
     
+    public void mostrarAcao(String mensagem) {
+        lblAcao.setText(mensagem);
+    }
+    
+    public void mostrarEfeito(String mensagem) {
+        lblEfeito.setText(mensagem);
+    }
+    
     public void atualizarInformacoes(
         int vidaProtagonista,
         int vidaMaximaProtagonista,
@@ -104,6 +112,8 @@ public class JFrameBatalha extends javax.swing.JFrame {
         lblvidaInim = new javax.swing.JLabel();
         lblEnergia = new javax.swing.JLabel();
         lblvidaProt2 = new javax.swing.JLabel();
+        lblAcao = new javax.swing.JLabel();
+        lblEfeito = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -121,7 +131,7 @@ public class JFrameBatalha extends javax.swing.JFrame {
         getContentPane().add(LblInim, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 159, -1, -1));
 
         AtaBtn.setText("Atacar");
-        getContentPane().add(AtaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(482, 327, 82, -1));
+        getContentPane().add(AtaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 327, 120, -1));
 
         DefBtn.setText("Defender");
         getContentPane().add(DefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 327, 120, -1));
@@ -155,6 +165,20 @@ public class JFrameBatalha extends javax.swing.JFrame {
         lblvidaProt2.setForeground(new java.awt.Color(255, 255, 255));
         lblvidaProt2.setText("jLabel2");
         getContentPane().add(lblvidaProt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, -1, 30));
+
+        lblAcao.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblAcao.setForeground(new java.awt.Color(255, 255, 255));
+        lblAcao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAcao.setText("SUA VEZ!");
+        lblAcao.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblAcao, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 720, 30));
+
+        lblEfeito.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblEfeito.setForeground(new java.awt.Color(255, 255, 0));
+        lblEfeito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEfeito.setText("Nenhum efeito especial ativado");
+        lblEfeito.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblEfeito, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/FundoBatalha (1).png"))); // NOI18N
@@ -200,6 +224,8 @@ public class JFrameBatalha extends javax.swing.JFrame {
     private javax.swing.JProgressBar barraVidaInim;
     private javax.swing.JProgressBar barraVidaProt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblAcao;
+    private javax.swing.JLabel lblEfeito;
     private javax.swing.JLabel lblEnergia;
     private javax.swing.JLabel lblvidaInim;
     private javax.swing.JLabel lblvidaProt2;
@@ -215,6 +241,8 @@ public class JFrameBatalha extends javax.swing.JFrame {
         SuperBtn.addActionListener(e -> batalhaController.usarPoderEspecial());
         
         batalhaController.atualizarInterface();
+        mostrarAcao("Sua vez! Escolha uma ação.");
+        mostrarEfeito("Nenhum efeito especial pendente.");
     }
 
 

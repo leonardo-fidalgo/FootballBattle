@@ -278,6 +278,19 @@ public class JogoController {
 
   
     public void sairResultado() {
+        if (jogo.verificarFimJogo()) {
+            try {
+                excluirSaveConcluido();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+                JOptionPane.showMessageDialog(telaResultado,
+                        "Erro ao excluir o save!",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
         this.telaResultado.setVisible(false);
         this.telaMenu.setVisible(true);
     }
@@ -307,10 +320,14 @@ public class JogoController {
     
     public void acaoResultado() {
 
-    if (jogo.getBatalha().getProtagonista().estaVivo()) {
-        proximaFase();
-    } else {
-        tentarNovamente();
+        if (jogo.getBatalha().getProtagonista().estaVivo()) {
+            proximaFase();
+        } else {
+            tentarNovamente();
+        }
     }
-}
+    
+    public void excluirSaveConcluido() throws SQLException {
+        saveDAO.excluir(save.getIdSave());
+    }
 }

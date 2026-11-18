@@ -20,7 +20,6 @@ public class Mito extends Inimigo{
             int novoAtaque = this.getNivelAtaque() *2;
             this.setNivelAtaque(novoAtaque);
             this.setNivelDefesa(0);
-            alvo.setNivelDefesa(0);
         
             atacar(alvo);
         }

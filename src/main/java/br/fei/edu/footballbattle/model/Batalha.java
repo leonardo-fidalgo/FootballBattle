@@ -22,6 +22,7 @@ public class Batalha {
     private boolean efeitoProtagonistaPendente = false;
     private boolean efeitoInimigoPendente = false;
     private String ultimaAcaoInimigo = "";
+    private int recargaPoderInimigo = 0;
     
     public Batalha(Protagonista protagonista, Inimigo inimigo) {
         this.protagonista = protagonista;
@@ -198,19 +199,39 @@ public class Batalha {
         Random random = new Random();
         int acao = random.nextInt(3);
 
+        if (acao == 2 && recargaPoderInimigo > 0) {
+            int sorteio = random.nextInt(3);
+
+            if (sorteio == 0 || sorteio == 1) {
+                acao = 0; // Atacar
+            } else {
+                acao = 1; // Defender
+            }
+        }
+        
+        if (recargaPoderInimigo > 0) {
+            recargaPoderInimigo--;
+        }        
+        
         switch (acao) {
             case 0:
+                ultimaAcaoInimigo = "ATAQUE";
                 ataqueInimigo();
                 break;
 
             case 1:
+                ultimaAcaoInimigo = "DEFESA";
                 defesaInimigo();
                 break;
 
             case 2:
                 if (!efeitoProtagonistaPendente) {
+                    ultimaAcaoInimigo = "PODER";
                     poderEspecialInimigo();
+                    
+                    recargaPoderInimigo = 3;
                 } else {
+                    ultimaAcaoInimigo = "ATAQUE";
                     ataqueInimigo();
                 }
                 break;
@@ -234,7 +255,17 @@ public class Batalha {
         return turnoProtagonista;
     }
     
+    public boolean isEfeitoProtagonistaPendente() {
+        return efeitoProtagonistaPendente;
+    }
+    
     public boolean isEfeitoInimigoPendente() {
         return efeitoInimigoPendente;
     }
+
+    public String getUltimaAcaoInimigo() {
+        return ultimaAcaoInimigo;
+    }
+    
+    
 }

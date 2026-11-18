@@ -22,10 +22,10 @@ public class SaveDAO {
     }
     
     public void inserir(Save save) throws SQLException{
-            String sql = "INSERT INTO save "
-                    + "(\"nomeSave\", \"nomeUsuario\", \"nivelAtual\", "
-                    + "\"nomeProtagonista\") "
-                    + "VALUES (?,?,?,?)";
+        String sql = "INSERT INTO save "
+                + "(\"nomeSave\", \"nomeUsuario\", \"nivelAtual\", "
+                + "\"nomeProtagonista\") "
+                + "VALUES (?,?,?,?) RETURNING id_save";
             
             
         PreparedStatement statement = conn.prepareStatement(sql); 
@@ -35,9 +35,14 @@ public class SaveDAO {
         statement.setInt(3, save.getNivelAtual());
         statement.setString(4, save.getProtagonista().getNome());
 
-        statement.execute();
-        statement.close();
-        }
+    ResultSet resultado = statement.executeQuery();
+
+    if (resultado.next()) {
+        save.setIdSave(resultado.getInt("id_save"));
+    }
+
+    statement.close();
+}
     
     //Consulta todos os saves do usuario
     public ResultSet consultar(String nomeUsuario) throws SQLException{

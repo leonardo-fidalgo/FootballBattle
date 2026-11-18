@@ -21,6 +21,7 @@ public class Batalha {
     private int nivelDefesaOriginalInimigo;
     private boolean efeitoProtagonistaPendente = false;
     private boolean efeitoInimigoPendente = false;
+    private String ultimaAcaoInimigo = "";
     
     public Batalha(Protagonista protagonista, Inimigo inimigo) {
         this.protagonista = protagonista;
@@ -48,14 +49,10 @@ public class Batalha {
 }
  
     private void alternarTurno() {
-    if (!batalhaFinalizada) {
-        turnoProtagonista = !turnoProtagonista;
-        
-        if (!turnoProtagonista) {
-            executarTurnoInimigo();
+        if (!batalhaFinalizada) {
+            turnoProtagonista = !turnoProtagonista;
         }
     }
-}
     
     public void ataqueProtagonista(){
         if(!batalhaFinalizada && turnoProtagonista){
@@ -237,5 +234,7 @@ public class Batalha {
         return turnoProtagonista;
     }
     
-    
+    public boolean isEfeitoInimigoPendente() {
+        return efeitoInimigoPendente;
+    }
 }

@@ -4,6 +4,8 @@
  */
 package br.fei.edu.footballbattle.view;
 
+import br.fei.edu.footballbattle.controller.JogoController;
+
 /**
  *
  * @author SAMSUNG
@@ -18,6 +20,28 @@ public class JFrameResultado extends javax.swing.JFrame {
     public JFrameResultado() {
         initComponents();
     }
+    
+    
+    public void configurarResultado(boolean venceu, boolean ultimaFase) {
+        
+        if (!venceu) {
+            jLabel1.setText("DERROTA");
+            jLabel2.setText("Você foi derrotado!");
+            NextBtn.setText("Tentar novamente");
+            NextBtn.setEnabled(true);
+            
+        } else if (ultimaFase) {
+            jLabel1.setText("VITÓRIA FINAL!");
+            jLabel2.setText("Você venceu todos os chefes!");
+            NextBtn.setEnabled(false);
+            
+        } else {
+            jLabel1.setText("VITÓRIA");
+            jLabel2.setText("Você derrotou o inimigo!");
+            NextBtn.setEnabled(true);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,4 +125,14 @@ public class JFrameResultado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+    private JogoController jogoController;
+
+    public void setJogoController(JogoController jogoController) {
+        this.jogoController = jogoController;
+        
+        NextBtn.addActionListener(e -> jogoController.acaoResultado());
+        SairBtn.addActionListener(e -> jogoController.sairResultado());        
+    }
+    
+    
 }

@@ -38,6 +38,38 @@ public class JFrameBatalha extends javax.swing.JFrame {
         barraEnergia.setBackground(Color.DARK_GRAY);
         
     }
+    
+    public void atualizarInformacoes(
+        int vidaProtagonista,
+        int vidaMaximaProtagonista,
+        int vidaInimigo,
+        int vidaMaximaInimigo,
+        int energia) {
+
+    barraVidaProt.setMaximum(vidaMaximaProtagonista);
+    barraVidaProt.setValue(vidaProtagonista);
+
+    barraVidaInim.setMaximum(vidaMaximaInimigo);
+    barraVidaInim.setValue(vidaInimigo);
+
+    barraEnergia.setMaximum(Math.max(100, energia));
+    barraEnergia.setValue(energia);
+
+    lblvidaProt2.setText(
+            vidaProtagonista + "/" + vidaMaximaProtagonista);
+
+    lblvidaInim.setText(
+            vidaInimigo + "/" + vidaMaximaInimigo);
+
+    lblEnergia.setText(energia + "/100");
+    }
+
+    
+    public void atualizarBotoes(boolean podeAgir, boolean podeUsarPoder) {
+        AtaBtn.setEnabled(podeAgir);
+        DefBtn.setEnabled(podeAgir);
+        SuperBtn.setEnabled(podeUsarPoder);
+    }
 
     public void carregarImagem(
         JLabel label, String caminho, int largura, int altura) {
@@ -174,9 +206,17 @@ public class JFrameBatalha extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private BatalhaController batalhaController;
 
+
     public void setBatalhaController(BatalhaController batalhaController) {
         this.batalhaController = batalhaController;
+        
+        AtaBtn.addActionListener(e -> batalhaController.atacar());
+        DefBtn.addActionListener(e -> batalhaController.defender());
+        SuperBtn.addActionListener(e -> batalhaController.usarPoderEspecial());
+        
+        batalhaController.atualizarInterface();
     }
+
 
     public JLabel getLblInim() {
         return LblInim;

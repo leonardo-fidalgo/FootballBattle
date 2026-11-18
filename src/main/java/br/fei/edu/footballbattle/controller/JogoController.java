@@ -146,9 +146,11 @@ public class JogoController {
             return;
         }
         
+        this.jogo.comecarBatalha();
         this.telaBatalha = new JFrameBatalha();
         
-        BatalhaController bc = new BatalhaController(this.jogo);
+        BatalhaController bc = new BatalhaController(this.jogo, 
+                this.telaBatalha, this);
         this.telaBatalha.setBatalhaController(bc);
         
         alterarImagemProt(protagonista);
@@ -203,7 +205,8 @@ public class JogoController {
             
             this.telaBatalha = new JFrameBatalha();
 
-            BatalhaController bc = new BatalhaController(this.jogo);
+            BatalhaController bc = new BatalhaController(this.jogo, 
+                    this.telaBatalha, this);
             this.telaBatalha.setBatalhaController(bc);
             
             alterarImagemProt(protagonista);
@@ -217,4 +220,97 @@ public class JogoController {
         
         resultado.getStatement().close();
     }
+    
+    public void finalizarBatalha() {
+
+    boolean venceu = !jogo.getBatalha().getInimigo().estaVivo()
+            && jogo.getBatalha().getProtagonista().estaVivo();
+
+    boolean ultimaFase = false;
+
+    if (venceu) {
+        ultimaFase = jogo.verificarFimJogo();
+
+        if (!ultimaFase) {
+            save.setNivelAtual(jogo.getNivelAtual());
+        }
+
+        try {
+            saveDAO.atualizar(save);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            JOptionPane.showMessageDialog(telaBatalha,
+                    "Erro ao atualizar o progresso!",
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    this.telaResultado = new JFrameResultado();
+    this.telaResultado.setJogoController(this);
+    this.telaResultado.configurarResultado(venceu, ultimaFase);
+
+    this.telaBatalha.setVisible(false);
+    this.telaResultado.setVisible(true);
+    }
+    
+    
+    public void proximaFase() {
+        
+        if (!jogo.verificarFimJogo()) {
+            jogo.comecarBatalha();
+            
+            this.telaBatalha = new JFrameBatalha();
+            
+            BatalhaController bc = new BatalhaController(
+                    this.jogo, this.telaBatalha, this);
+            
+            this.telaBatalha.setBatalhaController(bc);
+            
+            alterarImagemProt(jogo.getProtagonista());
+            alterarImagemInim();
+            
+            this.telaResultado.setVisible(false);
+            this.telaBatalha.setVisible(true);
+        }
+    }
+
+  
+    public void sairResultado() {
+        this.telaResultado.setVisible(false);
+        this.telaMenu.setVisible(true);
+    }
+    
+    public void tentarNovamente() {
+            
+        Protagonista protagonista = jogo.getProtagonista();
+        int nivel = jogo.getNivelAtual();
+        
+        this.jogo = new Jogo(protagonista);
+        this.jogo.restaurarProgresso(nivel);
+        this.jogo.comecarBatalha();
+        
+        this.telaBatalha = new JFrameBatalha();
+        
+        BatalhaController bc = new BatalhaController(
+                this.jogo, this.telaBatalha, this);
+        
+        this.telaBatalha.setBatalhaController(bc);
+        
+        alterarImagemProt(protagonista);
+        alterarImagemInim();
+        
+        this.telaResultado.setVisible(false);
+        this.telaBatalha.setVisible(true);
+    }
+    
+    public void acaoResultado() {
+
+    if (jogo.getBatalha().getProtagonista().estaVivo()) {
+        proximaFase();
+    } else {
+        tentarNovamente();
+    }
+}
 }

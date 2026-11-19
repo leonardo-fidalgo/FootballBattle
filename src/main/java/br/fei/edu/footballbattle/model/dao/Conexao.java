@@ -20,9 +20,9 @@ public class Conexao {
         Dotenv dotenv = Dotenv.load();
         
         Connection conexao = DriverManager.getConnection(
-                dotenv.get("jdbc:postgresql://localhost:5432/FootballBattle"),
-                dotenv.get("postgres"),
-                dotenv.get("Srcoxinha3#")                
+            dotenv.get("DB_URL"),
+            dotenv.get("DB_USER"),
+            dotenv.get("DB_PASSWORD")                
         );
         
         this.conn = conexao;

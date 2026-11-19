@@ -4,10 +4,8 @@
 
 package br.fei.edu.footballbattle;
 
-import br.fei.edu.footballbattle.controller.JogoController;
 import br.fei.edu.footballbattle.controller.UsuarioController;
 import br.fei.edu.footballbattle.model.dao.Conexao;
-import br.fei.edu.footballbattle.view.JFrameMenuPrincipal;
 import br.fei.edu.footballbattle.view.JFrameTelaCadastro;
 import br.fei.edu.footballbattle.view.JFrameTelaInicial;
 import java.sql.SQLException;

@@ -14,7 +14,8 @@ public class Usuario {
     private String nome_usuario;
     private String senha;
 
-    public Usuario(String nome, String sobrenome, String nome_usuario, String senha) {
+    public Usuario(String nome, String sobrenome, String nome_usuario, 
+            String senha) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.nome_usuario = nome_usuario;

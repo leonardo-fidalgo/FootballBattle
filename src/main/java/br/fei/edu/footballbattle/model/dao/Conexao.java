@@ -4,6 +4,7 @@
  */
 package br.fei.edu.footballbattle.model.dao;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,10 +17,14 @@ public class Conexao {
     private Connection conn;
 
     public Connection getConnection() throws SQLException{
+        Dotenv dotenv = Dotenv.load();
+        
         Connection conexao = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/FootballBattle", 
-                    "postgres",
-                    "Srcoxinha3#");
+                dotenv.get("jdbc:postgresql://localhost:5432/FootballBattle"),
+                dotenv.get("postgres"),
+                dotenv.get("Srcoxinha3#")                
+        );
+        
         this.conn = conexao;
         return this.conn;
     }

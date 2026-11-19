@@ -131,6 +131,7 @@ public class JFrameBatalha extends javax.swing.JFrame {
         getContentPane().add(LblInim, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 159, -1, -1));
 
         AtaBtn.setText("Atacar");
+        AtaBtn.addActionListener(this::AtaBtnActionPerformed);
         getContentPane().add(AtaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 327, 120, -1));
 
         DefBtn.setText("Defender");
@@ -188,6 +189,10 @@ public class JFrameBatalha extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AtaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtaBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AtaBtnActionPerformed
 
     /**
      * @param args the command line arguments
